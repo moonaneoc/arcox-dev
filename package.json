@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/moonaneoc/arcox-dev/issues"
   },
-  "homepage": "https://github.com/moonaneoc/arcox-dev#readme"
+  "homepage": "https://github.com/moonaneoc/arcox-dev#readme",
+  "dependencies": {
+    "vue": "^2.5.21"
+  }
 }

@@ -1,0 +1,10 @@
+body,p,input,ul,button {
+    font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB, Microsoft YaHei,Arial";
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+textarea{
+    tab-size: 4;
+}

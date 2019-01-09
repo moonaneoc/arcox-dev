@@ -1,8 +1,10 @@
-let { Editor, Renderer } = require("./arcox");
+import Vue from 'vue'
+import App from './App.vue'
 
-const fs = require("fs");
-console.log(fs);
+Vue.config.productionTip = false
 
-let template = fs.readFileSync("./template.html");
-let app = document.getElementById("app");
-console.log(app)
+new Vue({
+    el: '#app',
+    components: { App },
+    template: '<App/>'
+})
