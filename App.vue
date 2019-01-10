@@ -2,14 +2,20 @@
     <div id="app">
         <div class="ed">
             <textarea id="editor"></textarea>
-            <div id="renderer"></div>
+            <div id="renderer" class="arcox-renderer"></div>
         </div>
         <button @click="handleClick">format</button>
+        <button @click="bind">bind</button>
+        <button @click="unbind">unbind</button>
+        <ins>inserted</ins>
+        <mark>inserted</mark>
     </div>
 </template>
 
 <script>
     import "./base.css";
+    import "./arcox/css/arcox.css"
+    import './arcox/css/highlight.css'
 
     let { Editor, Renderer } = require("./arcox");
 
@@ -17,16 +23,32 @@
         name: 'App',
         mounted() {
             this.editor = new Editor("#editor");
-            this.renderer = new Renderer("#renderer");
+            this.renderer = new Renderer({
+                el: "#renderer",
+                lang: "js"
+            });
             this.editor.bind(this.renderer);
+            this.editor.setContent(`
+\`\`\`
+function(){
+    var a=2;
+}
+\`\`\``);
         },
         methods: {
             handleClick() {
-                console.log("click");
-                this.editor.format("bold");
+                if (!this.editor.renderer) this.editor.bind(this.renderer);
+                else this.editor.unbind();
+            },
+            bind() {
+                this.renderer.bind(this.editor);
+            },
+            unbind() {
+                this.renderer.unbind(this.editor);
             }
         }
     }
+
 </script>
 
 <style scoped>
